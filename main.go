@@ -15,5 +15,5 @@ func main() {
 	http.Handle("/user/", NewMyApi())
 
 	fmt.Println("starting server at :8080")
-	http.ListenAndServe(":8080", nil)
+	_ = http.ListenAndServe(":8080", nil)
 }
