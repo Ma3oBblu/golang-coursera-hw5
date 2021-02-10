@@ -44,7 +44,6 @@ func main() {
 	}
 
 	out, _ := os.Create(os.Args[2])
-
 	fmt.Fprintln(out, `package `+node.Name.Name)
 	fmt.Fprintln(out) // empty line
 	fmt.Fprintln(out, `import "encoding/binary"`)
@@ -89,7 +88,8 @@ func main() {
 			fmt.Printf("\tgenerating Unpack method\n")
 
 			fmt.Fprintln(out, "func (in *"+currType.Name.Name+") Unpack(data []byte) error {")
-			fmt.Fprintln(out, "	r := bytes.NewReader(data)")
+			fmt.Fprintln(out, "	ctx := r.Context()")
+			fmt.Fprintln(out, "}")
 
 		FIELDS_LOOP:
 			for _, field := range currStruct.Fields.List {
